@@ -1,272 +1,171 @@
 
-/* ==========================================
-   PROFILE WEBSITE - JAVASCRIPT
-   Vanilla JavaScript (ES6+)
-   ========================================== */
+document.addEventListener("DOMContentLoaded", () => {
 
+    // 1. MOBILE NAVIGATION
 
-/* ==========================================
-   1. MOBILE NAVIGATION
-   ========================================== */
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
 
-const menuToggle = document.getElementById("menu-toggle");
-const navLinks = document.getElementById("nav-links");
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", () => {
+            const isOpen = navLinks.classList.toggle("active");
 
-if (menuToggle && navLinks) {
-
-    // Open and close mobile navigation
-    menuToggle.addEventListener("click", () => {
-
-        const isOpen = navLinks.classList.toggle("active");
-
-        menuToggle.setAttribute("aria-expanded", isOpen);
-
-        menuToggle.textContent = isOpen ? "✕" : "☰";
-
-    });
-
-
-    // Close navigation after clicking a link
-    const navigationItems = navLinks.querySelectorAll("a");
-
-    navigationItems.forEach(link => {
-
-        link.addEventListener("click", () => {
-
-            navLinks.classList.remove("active");
-
-            menuToggle.setAttribute("aria-expanded", "false");
-
-            menuToggle.textContent = "☰";
-
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuToggle.textContent = isOpen ? "✕" : "☰";
         });
 
-    });
+        navLinks.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("active");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.textContent = "☰";
+            });
+        });
+    }
 
-}
 
+    // 2. SHOW MORE / SHOW LESS TIMELINE
 
-/* ==========================================
-   2. SHOW MORE / SHOW LESS TIMELINE
-   ========================================== */
+    const timelineItems = document.querySelectorAll(".timeline-item");
+    const showMoreButton = document.getElementById("show-more-btn");
 
-const timelineItems = document.querySelectorAll(".timeline-item");
+    const initiallyVisibleItems = 3;
 
-const showMoreButton = document.getElementById("show-more-btn");
-
-const visibleTimelineItems = 3;
-
-if (timelineItems.length > visibleTimelineItems && showMoreButton) {
-
-    // Initially hide timeline items after the first three
-    timelineItems.forEach((item, index) => {
-
-        if (index >= visibleTimelineItems) {
-
-            item.classList.add("hidden");
-
-        }
-
-    });
-
-    let timelineExpanded = false;
-
-    showMoreButton.addEventListener("click", () => {
-
-        timelineExpanded = !timelineExpanded;
+    if (timelineItems.length > initiallyVisibleItems && showMoreButton) {
+        let expanded = false;
 
         timelineItems.forEach((item, index) => {
-
-            if (index >= visibleTimelineItems) {
-
-                item.classList.toggle("hidden", !timelineExpanded);
-
+            if (index >= initiallyVisibleItems) {
+                item.classList.add("hidden");
             }
-
         });
 
-        showMoreButton.textContent = timelineExpanded
-            ? "Show Less"
-            : "Show More";
+        showMoreButton.addEventListener("click", () => {
+            expanded = !expanded;
 
-    });
+            timelineItems.forEach((item, index) => {
+                if (index >= initiallyVisibleItems) {
+                    item.classList.toggle("hidden", !expanded);
+                }
+            });
 
-} else if (showMoreButton) {
-
-    // Hide button when there are three or fewer milestones
-    showMoreButton.style.display = "none";
-
-}
-
-
-/* ==========================================
-   3. SCROLL-TRIGGERED ANIMATIONS
-   Using IntersectionObserver
-   ========================================== */
-
-// Select elements that should animate on scroll
-const revealElements = document.querySelectorAll(
-    ".section-heading, " +
-    ".timeline-item, " +
-    ".interest-card, " +
-    ".family-card, " +
-    ".family-banner, " +
-    ".hobby-item"
-);
-
-// Add reveal class to selected elements
-revealElements.forEach(element => {
-
-    element.classList.add("reveal");
-
-});
-
-
-// Create IntersectionObserver
-const revealObserver = new IntersectionObserver(
-
-    (entries, observer) => {
-
-        entries.forEach(entry => {
-
-            if (entry.isIntersecting) {
-
-                entry.target.classList.add("visible");
-
-                // Stop observing after the animation occurs
-                observer.unobserve(entry.target);
-
-            }
-
+            showMoreButton.textContent = expanded
+                ? "Show Less"
+                : "Show More";
         });
-
-    },
-
-    {
-        threshold: 0.15
+    } else if (showMoreButton) {
+        showMoreButton.style.display = "none";
     }
 
-);
+
+    // 3. SCROLL REVEAL ANIMATIONS
+
+    const revealElements = document.querySelectorAll(
+        ".section-heading, .timeline-item, .interest-card, " +
+        ".family-card, .family-banner, .hobby-item"
+    );
+
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries, currentObserver) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    currentObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15
+        });
+
+        revealElements.forEach((element) => {
+            element.classList.add("reveal");
+            observer.observe(element);
+        });
+    } else {
+        revealElements.forEach((element) => {
+            element.classList.add("visible");
+        });
+    }
 
 
-// Observe each element
-revealElements.forEach(element => {
+    // 4. IMAGE LIGHTBOX
 
-    revealObserver.observe(element);
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightbox-image");
+    const lightboxClose = document.getElementById("lightbox-close");
 
-});
+    const hobbyImages = document.querySelectorAll(".hobby-image");
 
-
-/* ==========================================
-   4. HOBBIES IMAGE LIGHTBOX
-   ========================================== */
-
-const hobbyImages = document.querySelectorAll(".hobby-image");
-
-const lightbox = document.getElementById("lightbox");
-
-const lightboxImage = document.getElementById("lightbox-image");
-
-const lightboxClose = document.getElementById("lightbox-close");
-
-
-// Open lightbox when an image is clicked
-hobbyImages.forEach(image => {
-
-    image.addEventListener("click", () => {
+    function openLightbox(image) {
+        if (!lightbox || !lightboxImage) return;
 
         lightboxImage.src = image.src;
-
-        lightboxImage.alt = image.alt;
+        lightboxImage.alt = image.alt || "Expanded hobby image";
 
         lightbox.classList.add("active");
+        lightbox.setAttribute("aria-hidden", "false");
 
         document.body.style.overflow = "hidden";
+    }
 
+    function closeLightbox() {
+        if (!lightbox) return;
+
+        lightbox.classList.remove("active");
+        lightbox.setAttribute("aria-hidden", "true");
+
+        document.body.style.overflow = "";
+    }
+
+    hobbyImages.forEach((image) => {
+        image.addEventListener("click", () => {
+            openLightbox(image);
+        });
     });
 
-});
+    if (lightboxClose) {
+        lightboxClose.addEventListener("click", closeLightbox);
+    }
 
+    if (lightbox) {
+        lightbox.addEventListener("click", (event) => {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+    }
 
-// Close lightbox
-function closeLightbox() {
-
-    lightbox.classList.remove("active");
-
-    lightboxImage.src = "";
-
-    document.body.style.overflow = "";
-
-}
-
-
-// Close using close button
-if (lightboxClose) {
-
-    lightboxClose.addEventListener("click", closeLightbox);
-
-}
-
-
-// Close by clicking outside the image
-if (lightbox) {
-
-    lightbox.addEventListener("click", event => {
-
-        if (event.target === lightbox) {
-
+    document.addEventListener("keydown", (event) => {
+        if (
+            event.key === "Escape" &&
+            lightbox &&
+            lightbox.classList.contains("active")
+        ) {
             closeLightbox();
-
         }
-
     });
 
-}
+
+    // 5. AUTOMATIC COPYRIGHT YEAR
+
+    const currentYear = document.getElementById("current-year");
+
+    if (currentYear) {
+        currentYear.textContent = new Date().getFullYear();
+    }
 
 
-// Close using Escape key
-document.addEventListener("keydown", event => {
+    // 6. BACK TO TOP
 
-    if (event.key === "Escape" && lightbox.classList.contains("active")) {
+    const backToTopButton = document.getElementById("back-to-top");
 
-        closeLightbox();
-
+    if (backToTopButton) {
+        backToTopButton.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
     }
 
 });
-
-
-/* ==========================================
-   5. AUTOMATIC COPYRIGHT YEAR
-   ========================================== */
-
-const currentYear = document.getElementById("current-year");
-
-if (currentYear) {
-
-    currentYear.textContent = new Date().getFullYear();
-
-}
-
-
-/* ==========================================
-   6. BACK TO TOP BUTTON
-   ========================================== */
-
-const backToTopButton = document.getElementById("back-to-top");
-
-if (backToTopButton) {
-
-    backToTopButton.addEventListener("click", () => {
-
-        window.scrollTo({
-
-            top: 0,
-
-            behavior: "smooth"
-
-        });
-
-    });
-
-}

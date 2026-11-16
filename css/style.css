@@ -1,13 +1,7 @@
 
 /* ==========================================
-   PROFILE WEBSITE - MAIN STYLESHEET
-   All theme values come from theme.css
-   ========================================== */
-
-
-/* ==========================================
    1. GLOBAL STYLES
-   ========================================== */
+========================================== */
 
 * {
     margin: 0;
@@ -22,10 +16,11 @@ html {
 
 body {
     font-family: var(--font-primary);
-    font-size: var(--font-size-md);
-    background-color: var(--color-bg);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--line-height);
     color: var(--color-text);
-    line-height: 1.7;
+    background-color: var(--color-background);
     overflow-x: hidden;
 }
 
@@ -35,100 +30,86 @@ img {
 }
 
 a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
 }
 
 button {
-    font-family: inherit;
+    font: inherit;
     cursor: pointer;
-    border: none;
 }
 
-ul {
-    list-style: none;
-}
-
-.container {
-    width: 90%;
-    max-width: var(--container-width);
-    margin: 0 auto;
-}
-
-.section {
-    padding: var(--spacing-section) 5%;
+section {
+    padding: var(--spacing-section) 8%;
 }
 
 .section-heading {
+    max-width: 700px;
+    margin: 0 auto var(--spacing-xl);
     text-align: center;
-    max-width: 750px;
-    margin: 0 auto var(--spacing-3xl);
-}
-
-.section-heading h2 {
-    font-family: var(--font-heading);
-    font-size: var(--font-size-3xl);
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-md);
-}
-
-.section-heading p {
-    color: var(--color-text-light);
 }
 
 .section-subtitle {
+    margin-bottom: var(--spacing-sm);
     color: var(--color-accent);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-small);
     font-weight: var(--font-weight-semibold);
     letter-spacing: 2px;
+}
+
+.section-heading h2 {
     margin-bottom: var(--spacing-sm);
+    color: var(--color-primary);
+    font-size: var(--font-size-heading);
+}
+
+.section-heading > p:last-child {
+    color: var(--color-text-muted);
 }
 
 
 /* ==========================================
    2. HEADER AND NAVIGATION
-   ========================================== */
+========================================== */
 
 .header {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: var(--z-header);
     width: 100%;
     height: var(--header-height);
-    background-color: var(--color-bg);
+    background-color: var(--color-surface);
     box-shadow: var(--shadow-sm);
-    z-index: var(--z-index-header);
 }
 
 .navbar {
-    width: 90%;
-    max-width: var(--container-width);
-    height: 100%;
-    margin: 0 auto;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 84%;
+    height: 100%;
+    margin: 0 auto;
 }
 
 .logo {
-    font-family: var(--font-heading);
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-bold);
     color: var(--color-primary);
+    font-size: var(--font-size-logo);
+    font-weight: var(--font-weight-bold);
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-lg);
+    list-style: none;
 }
 
 .nav-links a {
     color: var(--color-text);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-small);
     font-weight: var(--font-weight-medium);
-    transition: var(--transition-normal);
+    transition: color var(--transition-fast);
 }
 
 .nav-links a:hover {
@@ -137,534 +118,402 @@ ul {
 
 .menu-toggle {
     display: none;
-    background: none;
+    border: none;
+    background: transparent;
     color: var(--color-primary);
-    font-size: var(--font-size-xl);
+    font-size: 1.6rem;
 }
 
 
 /* ==========================================
    3. HERO SECTION
-   ========================================== */
+========================================== */
 
 .hero {
-    min-height: 100vh;
-    padding: calc(var(--header-height) + var(--spacing-3xl))
-             8% var(--spacing-3xl);
-
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
     align-items: center;
-    gap: var(--spacing-3xl);
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--color-bg-secondary),
-            var(--color-bg)
-        );
+    gap: var(--spacing-xl);
+    min-height: 100vh;
+    padding: calc(var(--header-height) + 50px) 10% 70px;
+    background-color: var(--color-background-alt);
 }
 
 .hero-content {
-    max-width: 700px;
-    animation: fadeInUp 1s ease;
+    max-width: 650px;
 }
 
 .hero-subtitle {
+    margin-bottom: var(--spacing-sm);
     color: var(--color-accent);
+    font-size: var(--font-size-small);
     font-weight: var(--font-weight-semibold);
     letter-spacing: 3px;
-    margin-bottom: var(--spacing-md);
 }
 
 .hero-content h1 {
-    font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    line-height: 1.1;
+    margin-bottom: var(--spacing-xs);
     color: var(--color-primary);
-    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-hero);
+    line-height: 1.1;
 }
 
 .hero-content h2 {
-    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-accent);
+    font-size: var(--font-size-subheading);
     font-weight: var(--font-weight-medium);
-    color: var(--color-secondary);
-    margin-bottom: var(--spacing-lg);
 }
 
 .hero-description {
-    color: var(--color-text-light);
     max-width: 550px;
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text-muted);
 }
 
 .hero-image {
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .hero-image img {
-    width: min(100%, 400px);
-    aspect-ratio: 4 / 5;
+    width: min(100%, 350px);
+    aspect-ratio: 1;
     object-fit: cover;
-    border-radius: var(--border-radius-lg);
+    border: 6px solid var(--color-surface);
+    border-radius: var(--radius-circle);
     box-shadow: var(--shadow-lg);
-    transition: var(--transition-slow);
 }
 
-.hero-image img:hover {
-    transform: translateY(-8px);
-}
+/* Hero button */
 
 
-/* ==========================================
-   4. BUTTONS
-   ========================================== */
+/* Hero button */
 
-.btn {
-    display: inline-block;
-    padding: var(--spacing-md) var(--spacing-xl);
-
-    background-color: var(--color-secondary);
-    color: var(--color-text-white);
-
-    border-radius: var(--border-radius-md);
+.hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 48px;
+    padding: 12px 23px;
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    background-color: var(--color-primary);
+    color: #ffffff;
+    font-size: var(--font-size-small);
     font-weight: var(--font-weight-semibold);
-
-    transition: var(--transition-normal);
+    letter-spacing: 0.3px;
+    transition:
+        background-color var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
 }
 
-.btn:hover {
-    background-color: var(--color-primary);
+.hero-btn span {
+    color: inherit;
+    font-size: 1.25rem;
+    line-height: 1;
+    transition: transform var(--transition-fast);
+}
+
+.hero-btn:hover {
+    background-color: transparent;
+    color: var(--color-primary);
     transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-sm);
 }
 
-.show-more-btn {
-    display: block;
-    margin: var(--spacing-xl) auto 0;
-
-    padding: var(--spacing-md) var(--spacing-xl);
-
-    background-color: var(--color-primary);
-    color: var(--color-text-white);
-
-    border-radius: var(--border-radius-md);
-    transition: var(--transition-normal);
+.hero-btn:hover span {
+    transform: translateX(4px);
 }
 
-.show-more-btn:hover {
-    background-color: var(--color-secondary);
-}
 
 
 /* ==========================================
-   5. PROFESSIONAL JOURNEY / TIMELINE
-   ========================================== */
+   4. PROFESSIONAL JOURNEY
+========================================== */
+
+.journey {
+    background-color: var(--color-background);
+}
 
 .timeline {
     position: relative;
-    max-width: 900px;
+    max-width: 850px;
     margin: 0 auto;
-    padding: var(--spacing-lg) 0;
 }
 
-/* Vertical timeline line */
-
 .timeline::before {
-    content: "";
     position: absolute;
-
-    top: 0;
-    bottom: 0;
-    left: 50%;
-
+    top: 10px;
+    bottom: 10px;
+    left: 65px;
     width: 2px;
     background-color: var(--color-border);
-
-    transform: translateX(-50%);
+    content: "";
 }
 
 .timeline-item {
     position: relative;
-    width: 50%;
-    padding: var(--spacing-lg) var(--spacing-2xl);
-}
-
-/* Timeline dots */
-
-.timeline-item::before {
-    content: "";
-
-    position: absolute;
-    top: var(--spacing-2xl);
-    right: -9px;
-
-    width: 16px;
-    height: 16px;
-
-    background-color: var(--color-accent);
-    border: 3px solid var(--color-bg);
-    border-radius: var(--border-radius-full);
-
-    z-index: var(--z-index-base);
-}
-
-.timeline-item:nth-child(odd) {
-    left: 0;
-    text-align: right;
-}
-
-.timeline-item:nth-child(even) {
-    left: 50%;
-    text-align: left;
-}
-
-.timeline-item:nth-child(even)::before {
-    left: -9px;
+    display: grid;
+    grid-template-columns: 65px 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
 }
 
 .timeline-year {
-    display: inline-block;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 20px;
     color: var(--color-accent);
     font-weight: var(--font-weight-bold);
-    margin-bottom: var(--spacing-sm);
+}
+
+.timeline-year::after {
+    position: absolute;
+    top: 25px;
+    right: -6px;
+    width: 12px;
+    height: 12px;
+    border: 3px solid var(--color-background);
+    border-radius: var(--radius-circle);
+    background-color: var(--color-accent);
+    content: "";
 }
 
 .timeline-content {
-    background-color: var(--color-card-bg);
-    padding: var(--spacing-lg);
-
+    padding: var(--spacing-md) var(--spacing-lg);
     border: 1px solid var(--color-border);
-    border-radius: var(--border-radius-md);
-
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
     box-shadow: var(--shadow-sm);
-    transition: var(--transition-normal);
+    transition: transform var(--transition-normal);
 }
 
 .timeline-content:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-md);
+    transform: translateX(5px);
 }
 
 .timeline-content h3 {
-    color: var(--color-primary);
-    font-size: var(--font-size-lg);
     margin-bottom: var(--spacing-xs);
+    color: var(--color-primary);
 }
 
 .timeline-content h4 {
-    color: var(--color-secondary);
-    font-size: var(--font-size-sm);
     margin-bottom: var(--spacing-sm);
+    color: var(--color-accent);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-medium);
 }
 
 .timeline-content p {
-    color: var(--color-text-light);
-    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
 }
-
-/* Optional timeline images */
-
-.timeline-content img {
-    width: 100%;
-    max-height: 180px;
-    object-fit: cover;
-    border-radius: var(--border-radius-md);
-    margin-top: var(--spacing-md);
-}
-
-/* Hidden timeline items */
 
 .timeline-item.hidden {
     display: none;
 }
 
+.show-more-btn {
+    display: block;
+    margin: var(--spacing-lg) auto 0;
+    padding: 11px 25px;
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    background-color: transparent;
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+    transition: all var(--transition-fast);
+}
+
+.show-more-btn:hover {
+    background-color: var(--color-primary);
+    color: var(--color-button-text);
+}
+
 
 /* ==========================================
-   6. PERSONAL INTERESTS
-   ========================================== */
+   5. PERSONAL INTERESTS
+========================================== */
 
 .interests {
-    background-color: var(--color-bg-secondary);
+    background-color: var(--color-background-alt);
 }
 
 .interests-grid {
     display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-xl);
-
-    max-width: var(--container-width);
-    margin: 0 auto;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--spacing-lg);
 }
 
 .interest-card {
-    background-color: var(--color-card-bg);
-    border-radius: var(--border-radius-lg);
-
     overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
     box-shadow: var(--shadow-sm);
-
-    transition: var(--transition-normal);
+    transition:
+        transform var(--transition-normal),
+        box-shadow var(--transition-normal);
 }
 
 .interest-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-7px);
+    box-shadow: var(--shadow-md);
 }
 
-.interest-card img {
+.interest-card > img {
     width: 100%;
-    height: 220px;
+    height: 210px;
     object-fit: cover;
-    transition: var(--transition-slow);
-}
-
-.interest-card:hover img {
-    transform: scale(1.04);
 }
 
 .card-content {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
 }
 
 .card-content h3 {
-    color: var(--color-primary);
-    font-size: var(--font-size-lg);
     margin-bottom: var(--spacing-sm);
+    color: var(--color-primary);
 }
 
 .card-content p {
-    color: var(--color-text-light);
-    font-size: var(--font-size-sm);
-    margin-bottom: var(--spacing-md);
-}
-
-.card-link {
-    display: inline-block;
-    color: var(--color-secondary);
-    font-weight: var(--font-weight-semibold);
-    transition: var(--transition-normal);
-}
-
-.card-link:hover {
-    color: var(--color-accent);
-}
-
-
-/* ==========================================
-   7. FAMILY SECTION
-   ========================================== */
-
-.family-banner {
-    max-width: 1000px;
-    margin: 0 auto var(--spacing-2xl);
-}
-
-.family-banner img {
-    width: 100%;
-    max-height: 450px;
-    object-fit: cover;
-
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-md);
-}
-
-.family-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: var(--spacing-xl);
-    max-width: 850px;
-    margin: 0 auto;
-}
-
-.family-card {
-    text-align: center;
-    background-color: var(--color-card-bg);
-
-    padding: var(--spacing-xl);
-
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-sm);
-
-    transition: var(--transition-normal);
-}
-
-.family-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-md);
-}
-
-.family-card img {
-    width: 160px;
-    height: 160px;
-
-    object-fit: cover;
-    border-radius: var(--border-radius-full);
-
-    margin: 0 auto var(--spacing-md);
-}
-
-.family-card h3 {
-    color: var(--color-primary);
     margin-bottom: var(--spacing-sm);
-}
-
-.family-card p {
-    color: var(--color-text-light);
-    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+    line-height: 1.7;
 }
 
 
 /* ==========================================
-   8. HOBBIES / IMAGE GALLERY
-   ========================================== */
+   6. PASSION SECTION
+========================================== */
 
-.hobbies {
-    background-color: var(--color-bg-secondary);
+.passion {
+    background-color: var(--color-background);
 }
 
 .hobbies-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: var(--spacing-md);
-
-    max-width: var(--container-width);
-    margin: 0 auto;
+    grid-template-columns: minmax(0, 650px);
+    justify-content: center;
+    gap: var(--spacing-lg);
 }
 
 .hobby-item {
     position: relative;
     overflow: hidden;
-
-    border-radius: var(--border-radius-md);
+    min-height: 340px;
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-md);
     cursor: pointer;
-
-    min-height: 220px;
 }
 
 .hobby-image {
     width: 100%;
-    height: 100%;
-    min-height: 220px;
-
+    height: 340px;
     object-fit: cover;
-    transition: var(--transition-slow);
+    transition: transform var(--transition-normal);
 }
 
 .hobby-item:hover .hobby-image {
-    transform: scale(1.08);
+    transform: scale(1.05);
 }
 
 .hobby-overlay {
     position: absolute;
     inset: 0;
-
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     padding: var(--spacing-lg);
-
     background: linear-gradient(
-        transparent,
-        rgba(0, 0, 0, 0.75)
+        to top,
+        var(--color-overlay),
+        transparent 75%
     );
-
-    opacity: 0;
-    transition: var(--transition-normal);
-}
-
-.hobby-item:hover .hobby-overlay {
-    opacity: 1;
+    color: #ffffff;
 }
 
 .hobby-overlay h3 {
-    color: var(--color-text-white);
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-card-title);
 }
 
 
 /* ==========================================
-   9. LIGHTBOX
-   ========================================== */
+   7. IMAGE LIGHTBOX
+========================================== */
 
 .lightbox {
     position: fixed;
     inset: 0;
-
+    z-index: var(--z-lightbox);
     display: none;
     align-items: center;
     justify-content: center;
-
-    padding: var(--spacing-xl);
-
-    background-color: rgba(0, 0, 0, 0.9);
-
-    z-index: var(--z-index-modal);
+    padding: var(--spacing-lg);
+    background-color: var(--color-lightbox);
 }
 
 .lightbox.active {
     display: flex;
 }
 
-.lightbox img {
+#lightbox-image {
     max-width: 90%;
     max-height: 85vh;
-
+    border-radius: var(--radius-md);
     object-fit: contain;
-    border-radius: var(--border-radius-md);
 }
 
 .lightbox-close {
     position: absolute;
-    top: var(--spacing-lg);
-    right: var(--spacing-2xl);
-
-    background: none;
-    color: var(--color-text-white);
-
-    font-size: var(--font-size-3xl);
+    top: 20px;
+    right: 30px;
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    font-size: 2.5rem;
 }
 
 
 /* ==========================================
-   10. FOOTER
-   ========================================== */
+   8. FOOTER
+========================================== */
 
 .footer {
     position: relative;
-
+    padding: var(--spacing-xl) 8% var(--spacing-md);
     background-color: var(--color-primary);
-    color: var(--color-text-white);
-
+    color: var(--color-button-text);
     text-align: center;
-    padding: var(--spacing-3xl) 5%;
 }
 
 .footer-content h2 {
-    font-family: var(--font-heading);
-    font-size: var(--font-size-2xl);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    font-size: var(--font-size-logo);
 }
 
-.footer-content p {
-    margin-bottom: var(--spacing-lg);
-    opacity: 0.8;
+.footer-content > p {
+    opacity: 0.85;
 }
 
 .social-links {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
 }
 
 .social-links a {
-    color: var(--color-text-white);
-    transition: var(--transition-normal);
+    transition: color var(--transition-fast);
 }
 
 .social-links a:hover {
@@ -672,28 +521,35 @@ ul {
 }
 
 .footer-bottom {
-    border-top: 1px solid var(--color-border);
-    margin-top: var(--spacing-2xl);
-    padding-top: var(--spacing-lg);
-
-    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: var(--font-size-small);
+    opacity: 0.8;
 }
 
-.back-to-top {
-    position: absolute;
-    right: var(--spacing-xl);
-    bottom: var(--spacing-xl);
 
+/* ==========================================
+   9. BACK TO TOP
+========================================== */
+
+.back-to-top {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: var(--z-back-to-top);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 45px;
     height: 45px;
-
+    border: none;
+    border-radius: var(--radius-circle);
     background-color: var(--color-accent);
-    color: var(--color-text-white);
-
-    border-radius: var(--border-radius-full);
-    font-size: var(--font-size-xl);
-
-    transition: var(--transition-normal);
+    color: #ffffff;
+    font-size: 1.4rem;
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-fast);
 }
 
 .back-to-top:hover {
@@ -702,13 +558,15 @@ ul {
 
 
 /* ==========================================
-   11. SCROLL ANIMATIONS
-   ========================================== */
+   10. SCROLL REVEAL
+========================================== */
 
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+    transform: translateY(25px);
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
 }
 
 .reveal.visible {
@@ -718,58 +576,40 @@ ul {
 
 
 /* ==========================================
-   12. KEYFRAME ANIMATIONS
-   ========================================== */
+   11. RESPONSIVE DESIGN
+========================================== */
 
-@keyframes fadeInUp {
-
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-}
-
-
-/* ==========================================
-   13. TABLET RESPONSIVENESS
-   ========================================== */
-
-@media (max-width: 992px) {
+@media (max-width: 900px) {
 
     .hero {
-        grid-template-columns: 1fr 0.8fr;
-        gap: var(--spacing-xl);
+        padding-right: 7%;
+        padding-left: 7%;
     }
 
     .interests-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .hobbies-grid {
-        grid-template-columns: repeat(2, 1fr);
+    section {
+        padding-right: 7%;
+        padding-left: 7%;
     }
 
 }
 
-
-/* ==========================================
-   14. MOBILE RESPONSIVENESS
-   ========================================== */
-
-@media (max-width: 768px) {
+@media (max-width: 650px) {
 
     :root {
-        --spacing-section: 4rem;
-        --header-height: 70px;
+        --header-height: 65px;
     }
 
-    /* Mobile Navigation */
+    section {
+        padding: 65px 6%;
+    }
+
+    .navbar {
+        width: 88%;
+    }
 
     .menu-toggle {
         display: block;
@@ -778,18 +618,14 @@ ul {
     .nav-links {
         position: absolute;
         top: var(--header-height);
+        right: 0;
         left: 0;
-
-        width: 100%;
-
         display: none;
         flex-direction: column;
-        align-items: center;
-
-        gap: var(--spacing-lg);
-        padding: var(--spacing-xl);
-
-        background-color: var(--color-bg);
+        align-items: stretch;
+        gap: 0;
+        padding: var(--spacing-sm) 6%;
+        background-color: var(--color-surface);
         box-shadow: var(--shadow-md);
     }
 
@@ -797,113 +633,122 @@ ul {
         display: flex;
     }
 
+    .nav-links li {
+        padding: var(--spacing-sm) 0;
+        border-bottom: 1px solid var(--color-border);
+    }
 
-    /* Hero */
+    .nav-links li:last-child {
+        border-bottom: none;
+    }
+
+    .nav-links a {
+        display: block;
+    }
 
     .hero {
         grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        padding: calc(var(--header-height) + 40px) 7% 60px;
         text-align: center;
-
-        padding-top: calc(
-            var(--header-height) + var(--spacing-2xl)
-        );
     }
 
     .hero-content {
-        margin: 0 auto;
+        order: 2;
     }
 
-    .hero-description {
-        margin-left: auto;
-        margin-right: auto;
+    .hero-image {
+        order: 1;
     }
 
     .hero-image img {
-        max-width: 300px;
+        width: min(65%, 240px);
     }
 
+    .hero-description {
+        margin-right: auto;
+        margin-left: auto;
+    }
 
-    /* Timeline */
+    .hero-content h1 {
+        font-size: clamp(2.5rem, 10vw, 3.5rem);
+    }
+
+    .hero-btn {
+        margin: 0 auto;
+    }
+
+    .interests-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .interest-card > img {
+        height: 220px;
+    }
+
+    .timeline {
+        padding-left: 0;
+    }
 
     .timeline::before {
-        left: 10px;
+        left: 49px;
     }
 
-    .timeline-item,
-    .timeline-item:nth-child(odd),
-    .timeline-item:nth-child(even) {
-        width: 100%;
-        left: 0;
-        text-align: left;
-
-        padding-left: var(--spacing-3xl);
-        padding-right: 0;
-    }
-
-    .timeline-item::before,
-    .timeline-item:nth-child(even)::before {
-        left: 2px;
-        right: auto;
-    }
-
-
-    /* Family */
-
-    .family-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* Footer */
-
-    .back-to-top {
-        position: static;
-        margin-top: var(--spacing-xl);
-    }
-
-}
-
-
-/* ==========================================
-   15. SMALL MOBILE SCREENS
-   ========================================== */
-
-@media (max-width: 480px) {
-
-    .section-heading h2 {
-        font-size: var(--font-size-2xl);
-    }
-
-    .interests-grid,
-    .hobbies-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-content h2 {
-        font-size: var(--font-size-lg);
-    }
-
-    .social-links {
+    .timeline-item {
+        grid-template-columns: 50px 1fr;
         gap: var(--spacing-md);
     }
 
+    .timeline-year::after {
+        right: -6px;
+    }
+
+    .timeline-content {
+        padding: var(--spacing-md);
+    }
+
+    .hobby-item {
+        min-height: 250px;
+    }
+
+    .hobby-image {
+        height: 250px;
+    }
+
+    .back-to-top {
+        right: 15px;
+        bottom: 15px;
+        width: 40px;
+        height: 40px;
+    }
+
 }
 
 
 /* ==========================================
-   16. REDUCED MOTION ACCESSIBILITY
-   ========================================== */
+   12. ACCESSIBILITY
+========================================== */
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 4px;
+}
 
 @media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior: auto;
-    }
 
     *,
     *::before,
     *::after {
+        scroll-behavior: auto !important;
         animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
     }
 
 }

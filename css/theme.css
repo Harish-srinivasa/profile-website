@@ -21,6 +21,13 @@
     --color-text-light: #64748b;
     --color-text-white: #ffffff;
 
+    /* Border Colors */
+    --color-border: #e2e8f0;
+
+    /* Overlay Colors */
+    --color-overlay: rgba(0, 0, 0, 0.75);
+    --color-lightbox: rgba(0, 0, 0, 0.9);
+
     /* Typography */
     --font-primary: 'Poppins', sans-serif;
     --font-heading: 'Playfair Display', serif;
@@ -53,8 +60,7 @@
     --container-width: 1200px;
     --header-height: 80px;
 
-    /* Borders */
-    --border-color: #e2e8f0;
+    /* Borders and Radius */
     --border-radius-sm: 4px;
     --border-radius-md: 8px;
     --border-radius-lg: 16px;
@@ -75,4 +81,5 @@
     --z-index-header: 100;
     --z-index-overlay: 500;
     --z-index-modal: 1000;
+
 }
