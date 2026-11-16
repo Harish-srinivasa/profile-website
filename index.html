@@ -1,0 +1,451 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Personal profile website">
+
+    <!-- TODO: Add your website title -->
+    <title>My Profile | Personal Website</title>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- JavaScript -->
+    <script src="js/main.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ================= HEADER / NAVIGATION ================= -->
+
+    <header class="header">
+
+        <nav class="navbar">
+
+            <!-- TODO: Add your name or preferred website logo -->
+            <a href="#hero" class="logo">Harish srinivasa</a>
+
+            <!-- Mobile Navigation Toggle -->
+            <button class="menu-toggle"
+                    id="menu-toggle"
+                    aria-label="Toggle navigation"
+                    aria-expanded="false">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="#interests">Interests</a></li>
+                <li><a href="#family">Family</a></li>
+                <li><a href="#hobbies">Hobbies</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main>
+
+        <!-- ================= HERO SECTION ================= -->
+
+        <section id="hero" class="hero">
+
+            <div class="hero-content">
+
+                <!-- TODO: Add your introductory tagline -->
+                <p class="hero-subtitle">
+                    HELLO, I'M HARISH SRINIVASA.
+                </p>
+
+                <!-- TODO: Add your full name -->
+                <h1>Harish srinivasa</h1>
+
+                <!-- TODO: Add your professional title or description -->
+                <h2>Software engineer</h2>
+
+                <!-- TODO: Write a short introduction about yourself -->
+                <p class="hero-description">
+                    I am Harish srinivasa. I am a software engineer at Psiog.
+                </p>
+
+                <a href="#journey" class="btn">
+                    Explore My Journey
+                </a>
+
+            </div>
+
+            <div class="hero-image">
+
+                <!-- TODO: Add your profile photograph
+                     Save it as images/hero/profile.jpg -->
+
+                <img src="images/hero/profile.jpg"
+                     alt="Your profile photograph">
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PROFESSIONAL JOURNEY ================= -->
+
+        <section id="journey" class="section journey">
+
+            <div class="section-heading">
+
+                <p class="section-subtitle">
+                    MY EXPERIENCE
+                </p>
+
+                <h2>Professional Journey</h2>
+
+                <!-- TODO: Write a short introduction about your journey -->
+                <p>
+                    I studied computer science engineering at Chennai Institute of Technology. I have joined Psiog as a Graduate trainee.
+                </p>
+
+            </div>
+
+            <div class="timeline">
+
+                <!-- TIMELINE ITEM TEMPLATE
+
+                Duplicate this article for every milestone.
+
+                TODO: Add:
+                1. Year or period
+                2. Milestone title
+                3. Organization or institution
+                4. Short description (2-3 lines)
+                5. Optional image
+
+                -->
+
+                <article class="timeline-item">
+
+                    <span class="timeline-year">
+                        <!-- Add year -->
+                    </span>
+
+                    <div class="timeline-content">
+
+                        <h3>
+                            <!-- Add milestone title -->
+                        </h3>
+
+                        <h4>
+                            <!-- Add organization / institution -->
+                        </h4>
+
+                        <p>
+                            <!-- Add milestone description -->
+                        </p>
+
+                        <!-- Optional milestone image -->
+
+                    </div>
+
+                </article>
+
+                <!-- TODO: Add more timeline-item articles
+                     for your remaining milestones -->
+
+            </div>
+
+            <!-- JavaScript: Show more / Show less -->
+            <button class="show-more-btn"
+                    id="show-more-btn">
+                Show More
+            </button>
+
+        </section>
+
+
+        <!-- ================= PERSONAL INTERESTS ================= -->
+
+        <section id="interests" class="section interests">
+
+            <div class="section-heading">
+
+                <p class="section-subtitle">
+                    WHAT INTERESTS ME
+                </p>
+
+                <h2>Personal Interests</h2>
+
+                <!-- TODO: Add a short introduction -->
+                <p>
+                    I am a writer. I write poems and articles.
+                </p>
+
+            </div>
+
+            <div class="interests-grid">
+
+                <!-- INTEREST CARD TEMPLATE
+
+                Duplicate this article for every interest.
+
+                TODO: Add:
+                1. Interest category
+                2. Image or icon
+                3. Interest title
+                4. Short description
+                5. Optional external link
+
+                Suggested categories in the assignment include
+                Music, Movies, Food, Books and Travel.
+                Choose your own interests.
+
+                -->
+
+                <article class="interest-card">
+
+                    <!-- TODO: Add interest image -->
+                    <img src="images/interests/interest-1.jpg"
+                         alt="Add image description">
+
+                    <div class="card-content">
+
+                        <!-- TODO: Add interest title -->
+                        <h3>Your Interest</h3>
+
+                        <!-- TODO: Add short description -->
+                        <p>
+                            Write about this interest here.
+                        </p>
+
+                        <!-- Optional: Add a relevant link -->
+                        <a href="#" class="card-link">
+                            Explore
+                        </a>
+
+                    </div>
+
+                </article>
+
+                <!-- TODO: Duplicate interest-card
+                     for all your other interests -->
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FAMILY SECTION ================= -->
+
+        <section id="family" class="section family">
+
+            <div class="section-heading">
+
+                <p class="section-subtitle">
+                    MY WORLD
+                </p>
+
+                <h2>Family</h2>
+
+                <!-- TODO: Add your own family introduction -->
+                <p>
+                    Write a short description about your family.
+                </p>
+
+            </div>
+
+            <!-- Family Group Photograph -->
+
+            <div class="family-banner">
+
+                <!-- TODO: Add family group photograph
+                     Save it as images/family/family-photo.jpg -->
+
+                <img src="images/family/family-photo.jpg"
+                     alt="Family group photograph">
+
+            </div>
+
+            <!-- Individual Family Member Cards -->
+
+            <div class="family-grid">
+
+                <!-- FAMILY CARD TEMPLATE
+
+                Duplicate this article for each family member.
+
+                TODO: Add:
+                1. Photograph
+                2. Relationship label
+                3. Name (optional)
+                4. Short description
+
+                -->
+
+                <article class="family-card">
+
+                    <!-- TODO: Add family member photograph -->
+                    <img src="images/family/member-1.jpg"
+                         alt="Family member photograph">
+
+                    <!-- TODO: Add relationship -->
+                    <h3>Relationship</h3>
+
+                    <!-- TODO: Add name (optional) -->
+                    <p>Add a short description here.</p>
+
+                </article>
+
+                <!-- TODO: Add more family-card articles -->
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= HOBBIES SECTION ================= -->
+
+        <section id="hobbies" class="section hobbies">
+
+            <div class="section-heading">
+
+                <p class="section-subtitle">
+                    BEYOND WORK
+                </p>
+
+                <h2>I have a strong passion towards writing.</h2>
+
+                <!-- TODO: Write a short introduction
+                     about your hobbies -->
+
+                <p>
+                    I read self help books.
+                </p>
+
+            </div>
+
+            <div class="hobbies-grid">
+
+                <!-- HOBBY ITEM TEMPLATE
+
+                Duplicate this div for every hobby.
+
+                TODO: Add:
+                1. Hobby image
+                2. Hobby title
+                3. Appropriate image description
+
+                -->
+
+                <div class="hobby-item">
+
+                    <!-- TODO: Add hobby image -->
+                    <img src="images/hobbies/hobby-1.jpg"
+                         alt="Add hobby image description"
+                         class="hobby-image">
+
+                    <div class="hobby-overlay">
+
+                        <!-- TODO: Add your hobby name -->
+                        <h3>Your Hobby</h3>
+
+                    </div>
+
+                </div>
+
+                <!-- TODO: Duplicate hobby-item
+                     for all your other hobbies -->
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= LIGHTBOX ================= -->
+
+    <!-- JavaScript-powered image expansion -->
+
+    <div class="lightbox" id="lightbox">
+
+        <button class="lightbox-close"
+                id="lightbox-close"
+                aria-label="Close image">
+            &times;
+        </button>
+
+        <img src=""
+             alt="Expanded hobby image"
+             id="lightbox-image">
+
+    </div>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer id="footer" class="footer">
+
+        <div class="footer-content">
+
+            <!-- TODO: Add your name -->
+            <h2>Your Name.</h2>
+
+            <!-- TODO: Add your personal closing message -->
+            <p>
+                Add a short closing message here.
+            </p>
+
+            <div class="social-links">
+
+                <!-- TODO: Replace with your LinkedIn profile URL -->
+                <a href="#"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    LinkedIn
+                </a>
+
+                <!-- TODO: Replace with your GitHub profile URL -->
+                <a href="#"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    GitHub
+                </a>
+
+                <!-- TODO: Replace with your email address -->
+                <a href="harish.srinivasa@psiog.com">
+                    Email
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                &copy;
+                <span id="current-year"></span>
+                Harish srinivasa. All rights reserved.
+            </p>
+
+        </div>
+
+        <!-- Back to Top Button -->
+
+        <button id="back-to-top"
+                class="back-to-top"
+                aria-label="Back to top">
+            ↑
+        </button>
+
+    </footer>
+
+</body>
+</html>
