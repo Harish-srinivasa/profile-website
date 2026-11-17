@@ -28,10 +28,12 @@
 
             <a href="#hero" class="logo">Harish srinivasa | Personal website</a>
 
-            <button class="menu-toggle"
-                    id="menu-toggle"
-                    aria-label="Toggle navigation"
-                    aria-expanded="false">
+            <button  class="theme-toggle"
+    id="theme-toggle"
+    type="button"
+    aria-label="Switch to dark mode"
+    aria-pressed="false">
+    🌙
                 ☰
             </button>
 
@@ -105,7 +107,8 @@
 
             </div>
 
-            <div class="timeline">
+            <div class="timeline" id="timeline-list"
+     aria-label="Academic and professional milestones">
 
                 <!-- Milestone 1 -->
 
@@ -223,10 +226,12 @@
 
             </div>
 
-            <button class="show-more-btn"
-                    id="show-more-btn">
-                Show More
-            </button>
+            <button type="button"
+        class="show-more-btn"
+        id="show-more-btn"
+        aria-controls="timeline-list">
+    Show More
+</button>
 
         </section>
 
